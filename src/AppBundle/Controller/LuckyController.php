@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class LuckyController extends Controller
 {
     /**
-     * @Route("/lucky/{count}", defaults={"count" = 1})
+     * @Route("/lucky/{count}", defaults={"count" = 1}, name="lucky")
      * @Template()
      */
     public function numberAction($count)

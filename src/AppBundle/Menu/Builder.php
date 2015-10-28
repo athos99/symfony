@@ -14,18 +14,18 @@ class Builder extends ContainerAware {
 // access services from the container!
     $em = $this->container->get('doctrine')->getManager();
 // findMostRecent and Blog are just imaginary examples
-    $blog = $em->getRepository('AppBundle:Blog')->findMostRecent();
+//    $blog = $em->getRepository('AppBundle:Blog')->findMostRecent();
 
-    $menu->addChild('Latest Blog Post', array(
-      'route' => 'blog_show',
-      'routeParameters' => array('id' => $blog->getId())
-    ));
+//    $menu->addChild('Latest Blog Post', array(
+//      'route' => 'blog_show',
+//      'routeParameters' => array('id' => $blog->getId())
+//    ));
 
 // create another menu item
-    $menu->addChild('About Me', array('route' => 'about'));
+    $menu->addChild('About Me', array('route' => 'product'));
 // you can also add sub level's to your menu's as follows
     $menu['About Me']->addChild('Edit profile',
-      array('route' => 'edit_profile'));
+      array('route' => 'lucky'));
 
 // ... add more children
 
