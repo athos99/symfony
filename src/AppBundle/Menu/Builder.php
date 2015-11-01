@@ -8,11 +8,16 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 class Builder extends ContainerAware {
   public function mainMenu(FactoryInterface $factory, array $options) {
     $menu = $factory->createItem('root');
-
     $menu->addChild('Home', array('route' => 'homepage'));
+    $menu->addChild('Lucky', array(
+        'route' => 'lucky',
+        'routeParameters'=>array('count'=>2)
+    ));
+    $menu->addChild('Category', array('route' => 'category'));
+    $menu->addChild('Product', array('route' => 'product'));
 
 // access services from the container!
-    $em = $this->container->get('doctrine')->getManager();
+//    $em = $this->container->get('doctrine')->getManager();
 // findMostRecent and Blog are just imaginary examples
 //    $blog = $em->getRepository('AppBundle:Blog')->findMostRecent();
 
