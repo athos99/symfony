@@ -1,9 +1,9 @@
 language: php
- sudo: false
+sudo: false
 
- cache:
-   directories:
-     - $HOME/.composer/cache/files
+cache:
+  directories:
+    - $HOME/.composer/cache/files
 php:
   - php: 5.3
   - 5.4
@@ -24,7 +24,6 @@ before_install:
   - sudo apt-get update > /dev/null
 
 install:
-
   # install drush globally
   - composer global require drush/drush:6.*
 
@@ -45,21 +44,16 @@ mysql:
 
 
 
- before_script:
-   # show some versions and env information
-   - php -r "echo INTL_ICU_VERSION . \"\n\";"
-   - mysql --version
+before_script:
+  # show some versions and env information
+  - php -r "echo INTL_ICU_VERSION . \"\n\";"
+  - mysql --version
 
   # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
   - mysql -e 'create database symfony_ex1'
 
 
 
-
-
-
-
-
- script:
-   - phpunit -c app
+script:
+  - phpunit -c app
  #  - vendor/bin/phpunit --verbose $PHPUNIT_FLAGS --exclude-group mssql,oci,wincache,xcache,zenddata,cubrid
