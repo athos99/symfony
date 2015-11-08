@@ -35,6 +35,7 @@ class ProductController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Product entity.
      *
@@ -58,7 +59,7 @@ class ProductController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -71,10 +72,14 @@ class ProductController extends Controller
      */
     private function createCreateForm(Product $entity)
     {
-        $form = $this->createForm(new ProductType(), $entity, array(
-            'action' => $this->generateUrl('product_create'),
-            'method' => 'POST',
-        ));
+        $form = $this->createForm(
+            new ProductType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('product_create'),
+                'method' => 'POST',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'Create'));
 
@@ -91,11 +96,11 @@ class ProductController extends Controller
     public function newAction()
     {
         $entity = new Product();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -119,7 +124,7 @@ class ProductController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -145,30 +150,35 @@ class ProductController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a Product entity.
-    *
-    * @param Product $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Product entity.
+     *
+     * @param Product $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Product $entity)
     {
-        $form = $this->createForm(new ProductType(), $entity, array(
-            'action' => $this->generateUrl('product_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+        $form = $this->createForm(
+            new ProductType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('product_update', array('id' => $entity->getId())),
+                'method' => 'PUT',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
+
     /**
      * Edits an existing Product entity.
      *
@@ -197,11 +207,12 @@ class ProductController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Product entity.
      *
@@ -241,7 +252,6 @@ class ProductController extends Controller
             ->setAction($this->generateUrl('product_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
