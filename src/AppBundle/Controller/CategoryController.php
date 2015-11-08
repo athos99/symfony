@@ -35,6 +35,7 @@ class CategoryController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Category entity.
      *
@@ -58,7 +59,7 @@ class CategoryController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -71,10 +72,14 @@ class CategoryController extends Controller
      */
     private function createCreateForm(Category $entity)
     {
-        $form = $this->createForm(new CategoryType(), $entity, array(
-            'action' => $this->generateUrl('category_create'),
-            'method' => 'POST',
-        ));
+        $form = $this->createForm(
+            new CategoryType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('category_create'),
+                'method' => 'POST',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'Create'));
 
@@ -91,11 +96,11 @@ class CategoryController extends Controller
     public function newAction()
     {
         $entity = new Category();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -119,7 +124,7 @@ class CategoryController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -145,30 +150,35 @@ class CategoryController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a Category entity.
-    *
-    * @param Category $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Category entity.
+     *
+     * @param Category $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Category $entity)
     {
-        $form = $this->createForm(new CategoryType(), $entity, array(
-            'action' => $this->generateUrl('category_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+        $form = $this->createForm(
+            new CategoryType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('category_update', array('id' => $entity->getId())),
+                'method' => 'PUT',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
+
     /**
      * Edits an existing Category entity.
      *
@@ -197,11 +207,12 @@ class CategoryController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Category entity.
      *
@@ -241,7 +252,6 @@ class CategoryController extends Controller
             ->setAction($this->generateUrl('category_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

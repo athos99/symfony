@@ -1,0 +1,65 @@
+language: php
+ sudo: false
+
+ cache:
+   directories:
+     - $HOME/.composer/cache/files
+php:
+  - php: 5.3
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+  - hhvm
+  - hhvm-nightly
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: hhvm-nightly
+    - php: 7.0
+
+
+before_install:
+  - sudo apt-get update > /dev/null
+
+install:
+
+  # install drush globally
+  - composer global require drush/drush:6.*
+
+install:
+  # install php packages required for running a web server from drush on php 5.3
+  - sudo apt-get install -y --force-yes php5-cgi php5-mysql
+
+  # add composer's global bin directory to the path
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - composer self-update && composer --version
+  - composer install
+
+mysql:
+  database: symfony_ex1
+  username: root
+  encoding: utf8
+
+
+
+
+ before_script:
+   # show some versions and env information
+   - php -r "echo INTL_ICU_VERSION . \"\n\";"
+   - mysql --version
+
+  # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
+  - mysql -e 'create database symfony_ex1'
+
+
+
+
+
+
+
+
+ script:
+   - phpunit -c app
+ #  - vendor/bin/phpunit --verbose $PHPUNIT_FLAGS --exclude-group mssql,oci,wincache,xcache,zenddata,cubrid
