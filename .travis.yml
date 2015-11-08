@@ -39,12 +39,12 @@ before_script:
   # show some versions and env information
   - php -r "echo INTL_ICU_VERSION . \"\n\";"
   - mysql --version
-
   # create new site, stubbing sendmail path with true to prevent delivery errors and manually resolving drush path
   - mysql -e 'create database symfony_ex1'
 
 
 
 script:
-  - phpunit -c app
- #  - vendor/bin/phpunit --verbose $PHPUNIT_FLAGS --exclude-group mssql,oci,wincache,xcache,zenddata,cubrid
+  - php --version
+#  - phpunit -c app
+#  - vendor/bin/phpunit --verbose $PHPUNIT_FLAGS --exclude-group mssql,oci,wincache,xcache,zenddata,cubrid
