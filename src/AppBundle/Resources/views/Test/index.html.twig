@@ -3,5 +3,11 @@
 {% block title %}AppBundle:Test:index{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Test:index page</h1>
+
+    <ul id="navigation">
+        {% for link in links %}
+            <li><a href="{{ link.href }}">{{ link.text | raw}}</a></li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}

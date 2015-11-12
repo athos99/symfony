@@ -5,11 +5,11 @@ index:
 
 test1:
     path:     test1
-    defaults: { _controller: AppBundle:Test:index }
+    defaults: { _controller: AppBundle:Test:index1 }
 
 
 
 
 test2:
-    path:     test_2
-    defaults: { _controller: AppBundle:Test:index }
+    path:     test2
+    defaults: { _controller: AppBundle:Test:index2 }
