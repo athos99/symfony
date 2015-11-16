@@ -80,4 +80,33 @@ class Product
     {
         return $this->category;
     }
+    /**
+     * @var string
+     */
+    private $price;
+
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     *
+     * @return Product
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
 }

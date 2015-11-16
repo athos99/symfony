@@ -1,4 +1,4 @@
-index:
+test:
     path:     test
     defaults: { _controller: AppBundle:Test:index }
 

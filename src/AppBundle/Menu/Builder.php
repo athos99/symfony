@@ -15,6 +15,7 @@ class Builder extends ContainerAware {
     ));
     $menu->addChild('Category', array('route' => 'category'));
     $menu->addChild('Product', array('route' => 'product'));
+    $menu->addChild('Test', array('route' => 'test'));
 
 // access services from the container!
 //    $em = $this->container->get('doctrine')->getManager();
