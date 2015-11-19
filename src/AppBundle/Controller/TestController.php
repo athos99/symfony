@@ -13,18 +13,10 @@ class TestController extends Controller
     public function indexAction()
     {
 
-        $links = array(
-          array(
-            'href' => $this->generateUrl('test1'),
-            'text' => '<b>test1</b>',
-          ),
-          array('href' => $this->generateUrl('test2'), 'text' => 'test2'),
-
-        );
 
         return $this->render(
           'AppBundle:Test:index.html.twig',
-          array('links' => $links)
+          array('data' => null)
         );
     }
 
@@ -54,19 +46,11 @@ class TestController extends Controller
         $em->remove($product);
         $em->flush();
 
-        $links = array(
-          array(
-            'href' => $this->generateUrl('test1'),
-            'text' => '<b>test1</b>',
-          ),
-          array('href' => $this->generateUrl('test2'), 'text' => 'test2'),
-
-        );
-
         return $this->render(
           'AppBundle:Test:index.html.twig',
-          array('links' => $links)
+          array('data' => var_export($product,true))
         );
+
     }
 
     public function index2Action()
@@ -101,25 +85,26 @@ class TestController extends Controller
         )->setParameter('name', 'xxxx');
 
         $products = $query->execute();
-
-
-        $links = array(
-          array(
-            'href' => $this->generateUrl('test1'),
-            'text' => '<b>test1</b>',
-          ),
-          array('href' => $this->generateUrl('test2'), 'text' => 'test2'),
-
-        );
-
         return $this->render(
           'AppBundle:Test:index.html.twig',
-          array('links' => $links)
+          array('data' => print_r(null,true))
         );
+
+
     }
 
     function index3Action() {
-        $products = $this->get('app.product_repository')->findAll();
+
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->getRepository('AppBundle:Product')
+          ->findAllOrderedByName();
+
+        $rep = $this->get('app.product_repository');
+        $products = $rep->findAll();
+        return $this->render(
+          'AppBundle:Test:index.html.twig',
+          array('data' => null)
+        );
     }
 
 }

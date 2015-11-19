@@ -4,10 +4,5 @@
 
 {% block content %}
 
-    <ul id="navigation">
-        {% for link in links %}
-            <li><a href="{{ link.href }}">{{ link.text | raw}}</a></li>
-        {% endfor %}
-    </ul>
-
+{{ data }}
 {% endblock %}
