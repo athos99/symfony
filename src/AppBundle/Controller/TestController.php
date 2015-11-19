@@ -118,4 +118,8 @@ class TestController extends Controller
         );
     }
 
+    function index3Action() {
+        $products = $this->get('app.product_repository')->findAll();
+    }
+
 }
