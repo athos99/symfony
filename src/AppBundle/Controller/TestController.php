@@ -2,10 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Category;
+use Symfony\Component\Validator\Mapping\Cache\DoctrineCache;
 
 
 class TestController extends Controller
@@ -104,6 +106,15 @@ class TestController extends Controller
         return $this->render(
           'AppBundle:Test:index.html.twig',
           array('data' => null)
+        );
+    }
+    function index4Action() {
+        /** @var Connection $conn */
+        $conn = $this->get('database_connection');
+        $users = $conn->fetchAll('SELECT * FROM product');
+        return $this->render(
+            'AppBundle:Test:index.html.twig',
+            array('data' => null)
         );
     }
 
