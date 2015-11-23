@@ -111,7 +111,35 @@ class TestController extends Controller
     function index4Action() {
         /** @var Connection $conn */
         $conn = $this->get('database_connection');
-        $users = $conn->fetchAll('SELECT * FROM product');
+
+         /* fetch all products */
+        $products = $conn->fetchAll('SELECT * FROM product');
+
+        /* simple */
+        $sql = 'SELECT * FROM product';
+        $stmt = $conn->query($sql);
+        while( $row = $stmt->fetch()) {
+             $product=$row;
+        }
+
+
+        /* simple with values */
+        $sql = 'SELECT * FROM product WHERE id != :id';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue('id',0);
+        $stmt->execute();
+        while( $row = $stmt->fetch()) {
+            $a=$row;
+        }
+
+        /* simple with params */
+        $id = 0;
+        $sql = 'SELECT * FROM product WHERE id != :id';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam('id',$id);
+        $stmt->execute();
+        $products = $stmt->fetchAll();
+
         return $this->render(
             'AppBundle:Test:index.html.twig',
             array('data' => null)

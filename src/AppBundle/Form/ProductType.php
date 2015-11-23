@@ -16,19 +16,19 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('category');
+            ->add('price')
+            ->add('category')
+        ;
     }
-
+    
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(
-            array(
-                'data_class' => 'AppBundle\Entity\Product',
-            )
-        );
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Entity\Product'
+        ));
     }
 
     /**
