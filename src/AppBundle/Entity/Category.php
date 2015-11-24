@@ -97,5 +97,15 @@ class Category
     {
         return $this->products;
     }
-}
 
+    /**
+     * Object string value
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+}
