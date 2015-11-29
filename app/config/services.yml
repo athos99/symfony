@@ -21,3 +21,7 @@ services:
       #
       # // same code using repository services
       # $products = $this->get('app.product_repository')->findAll();
+
+
+    imports:
+       - { ressource: "@AppBundle/Resources/config/routing.yml"}

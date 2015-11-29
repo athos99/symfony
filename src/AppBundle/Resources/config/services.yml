@@ -1,0 +1,3 @@
+  app.manager_model:
+    class:     AppBundle\Manager\ModelManager
+    arguments: [doctrine.orm.entity_manager]
