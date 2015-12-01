@@ -19,7 +19,7 @@ class ModelManager
     public $em;
 
 
-    public function __construct(EntityManageranager $em)
+    public function __construct(EntityManager $em)
     {
         $this->em = $em;
     }
