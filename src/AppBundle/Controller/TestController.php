@@ -103,6 +103,10 @@ class TestController extends Controller
 
         $rep = $this->get('app.product_repository');
         $products = $rep->findAll();
+
+
+        $rep = $this->get('app.model_manager');
+
         return $this->render(
           'AppBundle:Test:index.html.twig',
           array('data' => null)

@@ -1,3 +1,4 @@
-  app.manager_model:
+services:
+  app.model_manager:
     class:     AppBundle\Manager\ModelManager
     arguments: [doctrine.orm.entity_manager]
