@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Manager\ModelManager;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -104,7 +105,7 @@ class TestController extends Controller
         $rep = $this->get('app.product_repository');
         $products = $rep->findAll();
 
-
+        $modelManager = new ModelManager( $em);
         $rep = $this->get('app.model_manager');
 
         return $this->render(
@@ -147,6 +148,14 @@ class TestController extends Controller
         return $this->render(
             'AppBundle:Test:index.html.twig',
             array('data' => null)
+        );
+    }
+    function index5Action() {
+        $modelManager= $this->get('app.model_manager');
+
+        return $this->render(
+          'AppBundle:Test:index.html.twig',
+          array('data' => null)
         );
     }
 
