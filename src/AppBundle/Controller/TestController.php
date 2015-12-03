@@ -151,7 +151,27 @@ class TestController extends Controller
         );
     }
     function index5Action() {
+        /** @var ModelManager $modelManager */
         $modelManager= $this->get('app.model_manager');
+
+        $prod = $modelManager->getProduct('p1');
+
+
+
+
+        $catA = $modelManager->addCategory('A');
+        $catB  = $modelManager->addCategory('B');
+        $catC = $modelManager->addCategory('C');
+
+        $prod1 = $modelManager->addProduct('p1','A');
+        $prod2 = $modelManager->addProduct('p2','D');
+        $prod3 = $modelManager->addProduct('p3',null);
+
+        $modelManager->commit();
+
+
+        $prod01 = $modelManager->getProduct('p1');
+
 
         return $this->render(
           'AppBundle:Test:index.html.twig',

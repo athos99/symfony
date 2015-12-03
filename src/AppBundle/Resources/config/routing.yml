@@ -15,4 +15,4 @@ test4:
     defaults: { _controller: AppBundle:Test:index4 }
 test5:
     path:     test5
-    defaults: { _controller: AppBundle:Test:index4 }
+    defaults: { _controller: AppBundle:Test:index5 }

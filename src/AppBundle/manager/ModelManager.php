@@ -7,7 +7,9 @@
  */
 
 namespace AppBundle\Manager;
+
 use AppBundle\Entity\Category;
+use AppBundle\Entity\Product;
 use Doctrine\ORM\EntityManager;
 
 class ModelManager
@@ -18,25 +20,79 @@ class ModelManager
     public $em;
 
 
+    public $categoryRepositiory;
+    public $productRepositiory;
+
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
+        $this->categoryRepository = $this->em->getRepository(
+          'AppBundle:Category'
+        );
+        $this->productRepository = $this->em->getRepository(
+          'AppBundle:Product'
+        );
     }
 
-    public function addCategory( $name) {
+
+
+
+    public function commit() {
+        $this->em->flush();
+    }
+
+    /**
+     * @param string $name
+     * @return Category
+     */
+    public function addCategory($name)
+    {
         $category = $this->getCategory($name);
-        if ( $category == null) {
+        if ($category == null) {
             $category = new Category();
             $category->setName($name);
             $this->em->persist($category);
-            $this->em->flush();
         }
         return $category;
     }
 
-    public function getCategory( $name) {
-        $categoryRepository = $this->em->getRepository('AppBundle:Category');
-        $category = $categoryRepository->findOneBy(['name'=>$name]);
-        return $category;
+    public function addProduct($name, $categoryName = null)
+    {
+        $category = null;
+        if ($categoryName != null) {
+            $category = $this->addCategory($categoryName);
+        }
+        $product = $this->getProduct($name);
+        if ($product == null) {
+            $product = new Product();
+            $product->setName($name);
+            $product->setPrice(0);
+            $product->setCategory($category);
+            $this->em->persist($product);
+        } else {
+            $product->setCategory($category);
+        }
+        return $product;
     }
+
+
+    /**
+     * @param string $name
+     * @return Category
+     */
+    public function getCategory($name)
+    {
+        return $this->categoryRepository->findOneBy(['name' => $name]);
+    }
+
+    /**
+     * @param string $name
+     * @return product
+     */
+    public function getProduct($name)
+    {
+        return $this->productRepository->findOneBy(['name' => $name]);
+    }
+
+
 }
