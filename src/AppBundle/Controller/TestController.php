@@ -18,8 +18,8 @@ class TestController extends Controller
 
 
         return $this->render(
-          'AppBundle:Test:index.html.twig',
-          array('data' => null)
+            'AppBundle:Test:index.html.twig',
+            array('data' => null)
         );
     }
 
@@ -50,8 +50,8 @@ class TestController extends Controller
         $em->flush();
 
         return $this->render(
-          'AppBundle:Test:index.html.twig',
-          array('data' => var_export($product,true))
+            'AppBundle:Test:index.html.twig',
+            array('data' => var_export($product, true))
         );
 
     }
@@ -74,7 +74,7 @@ class TestController extends Controller
         $em->flush();
 
         $query = $em->createQuery(
-          'SELECT p
+            'SELECT p
           FROM AppBundle:Product p
           WHERE p.price > :price
           ORDER BY p.name ASC'
@@ -82,66 +82,70 @@ class TestController extends Controller
 
         $products = $query->getResult();
         $query = $em->createQuery(
-          'DELETE
+            'DELETE
            FROM AppBundle:Product p
            WHERE p.name = :name'
         )->setParameter('name', 'xxxx');
 
         $products = $query->execute();
+
         return $this->render(
-          'AppBundle:Test:index.html.twig',
-          array('data' => print_r(null,true))
+            'AppBundle:Test:index.html.twig',
+            array('data' => print_r(null, true))
         );
 
 
     }
 
-    function index3Action() {
+    function index3Action()
+    {
 
         $em = $this->getDoctrine()->getManager();
         $products = $em->getRepository('AppBundle:Product')
-          ->findAllOrderedByName();
+            ->findAllOrderedByName();
 
         $rep = $this->get('app.product_repository');
         $products = $rep->findAll();
 
-        $modelManager = new ModelManager( $em);
+        $modelManager = new ModelManager($em);
         $rep = $this->get('app.model_manager');
 
         return $this->render(
-          'AppBundle:Test:index.html.twig',
-          array('data' => null)
+            'AppBundle:Test:index.html.twig',
+            array('data' => null)
         );
     }
-    function index4Action() {
+
+    function index4Action()
+    {
         /** @var Connection $conn */
         $conn = $this->get('database_connection');
 
-         /* fetch all products */
+        /* fetch all products */
         $products = $conn->fetchAll('SELECT * FROM product');
 
         /* simple */
         $sql = 'SELECT * FROM product';
         $stmt = $conn->query($sql);
-        while( $row = $stmt->fetch()) {
-             $product=$row;
+        while ($row = $stmt->fetch()) {
+            $product = $row;
         }
 
 
         /* simple with values */
         $sql = 'SELECT * FROM product WHERE id != :id';
         $stmt = $conn->prepare($sql);
-        $stmt->bindValue('id',0);
+        $stmt->bindValue('id', 0);
         $stmt->execute();
-        while( $row = $stmt->fetch()) {
-            $a=$row;
+        while ($row = $stmt->fetch()) {
+            $a = $row;
         }
 
         /* simple with params */
         $id = 0;
         $sql = 'SELECT * FROM product WHERE id != :id';
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam('id',$id);
+        $stmt->bindParam('id', $id);
         $stmt->execute();
         $products = $stmt->fetchAll();
 
@@ -150,32 +154,38 @@ class TestController extends Controller
             array('data' => null)
         );
     }
-    function index5Action() {
+
+    function index5Action()
+    {
         /** @var ModelManager $modelManager */
-        $modelManager= $this->get('app.model_manager');
+        $modelManager = $this->get('app.model_manager');
 
         $prod = $modelManager->getProduct('p1');
 
 
-
-
         $catA = $modelManager->addCategory('A');
-        $catB  = $modelManager->addCategory('B');
+        $catB = $modelManager->addCategory('B');
         $catC = $modelManager->addCategory('C');
 
-        $prod1 = $modelManager->addProduct('p1','A');
-        $prod2 = $modelManager->addProduct('p2','D');
-        $prod3 = $modelManager->addProduct('p3',null);
+        $prod1 = $modelManager->addProduct('p1', 'A');
+        $prod2 = $modelManager->addProduct('p2', 'D');
+        $prod3 = $modelManager->addProduct('p3', null);
+        $prod4 = $modelManager->addProduct('p4', 'A');
 
         $modelManager->commit();
 
 
         $prod01 = $modelManager->getProduct('p1');
-
+        $category = $prod01->getCategory();
+        $p = [];
+        $coll = $catA->getProducts();
+        foreach ($coll as $product) {
+            $p[] = $product;
+        }
 
         return $this->render(
-          'AppBundle:Test:index.html.twig',
-          array('data' => null)
+            'AppBundle:Test:index.html.twig',
+            array('data' => null)
         );
     }
 
