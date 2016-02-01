@@ -17,7 +17,7 @@ services:
       #
   app.product_repository:
     class:     Doctrine\ORM\EntityRepository
-    factory:   [@doctrine.orm.entity_manager, getRepository]
+    factory:   ['@doctrine.orm.entity_manager', getRepository]
     arguments: [AppBundle\Entity\Product]
       #
       # // traditional code inside a controller
