@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block  template %}{{ parent() }} -> AppBundle::base.html.twig {% endblock %}
+{% block body %}
+    {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
+    {% block content %}
+        {% block fos_user_content %}{% endblock %}
+
+    {% endblock %}
+{% endblock %}
