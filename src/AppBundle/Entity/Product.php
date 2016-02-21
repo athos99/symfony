@@ -109,4 +109,17 @@ class Product
     {
         return $this->category;
     }
+
+    /**
+     * Object string value
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+
+
 }

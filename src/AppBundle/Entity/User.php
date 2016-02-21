@@ -8,4 +8,15 @@ namespace AppBundle\Entity;
 class User extends \FOS\UserBundle\Model\User
 {
 
+
+    /**
+     * Object string value
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 }
