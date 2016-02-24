@@ -11,3 +11,6 @@
 /web/bundles/
 .idea/
 composer.lock
+src/AppBundle/Entity/Category.php~
+src/AppBundle/Entity/Product.php~
+src/AppBundle/Entity/User.php~

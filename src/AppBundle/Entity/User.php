@@ -16,7 +16,7 @@ class User extends \FOS\UserBundle\Model\User
      */
     public function __toString()
     {
-        return $this->name;
+        return $this->username;
     }
 
 }
