@@ -17,8 +17,8 @@ class Builder implements ContainerAwareInterface {
         'route' => 'lucky',
         'routeParameters'=>array('count'=>2)
     ));
-    $menu->addChild('Category', array('route' => 'category'));
-    $menu->addChild('Product', array('route' => 'product'));
+    $menu->addChild('Category', array('route' => 'category_index'));
+    $menu->addChild('Product', array('route' => 'product_index'));
     $menu->addChild('Test', array('route' => 'test'));
     $menu['Test']->addChild('Test1', array('route' => 'test1'));
     $menu['Test']->addChild('Test2', array('route' => 'test2'));
@@ -37,7 +37,7 @@ class Builder implements ContainerAwareInterface {
 //    ));
 
 // create another menu item
-    $menu->addChild('About Me', array('route' => 'product'));
+    $menu->addChild('About Me', array('route' => 'product_index'));
 // you can also add sub level's to your menu's as follows
     $menu['About Me']->addChild('Edit profile',
       array('route' => 'lucky'));
