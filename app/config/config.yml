@@ -92,12 +92,6 @@ knp_menu:
     default_renderer: twig
 
 
-sonata_block:
-    default_contexts: [cms]
-    blocks:
-        # enable the SonataAdminBundle block
-        sonata.admin.block.admin_list:
-            contexts: [admin]
 
 
 
@@ -130,3 +124,10 @@ services:
     fos_user.doctrine_registry:
         alias: doctrine
 
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]

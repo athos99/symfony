@@ -13,7 +13,7 @@ class ProductAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name', 'text');
-        $formMapper->add('price', 'text');
+        $formMapper->add('price', 'number');
         $formMapper->add('category','entity', array('class' => 'AppBundle\Entity\Category','choice_name' => 'name'));
     }
 
@@ -25,6 +25,7 @@ class ProductAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('name');
-        $listMapper->addIdentifier('price');
+        $listMapper->add('price');
+        $listMapper->add('category.name');
     }
 }

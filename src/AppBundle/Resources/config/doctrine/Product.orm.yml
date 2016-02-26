@@ -14,7 +14,8 @@ AppBundle\Entity\Product:
             length: 255
         price:
             type: decimal
-            scale : 2
+            scale: 2
+            nullable: true
     manyToOne:
             category:
                 targetEntity: Category
