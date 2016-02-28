@@ -18,7 +18,7 @@ class TestController extends Controller
 
 
         return $this->render(
-            'AppBundle:Test:index.html.twig',
+            'AppBundle:test:index.html.twig',
             array('data' => null)
         );
     }
@@ -50,7 +50,7 @@ class TestController extends Controller
         $em->flush();
 
         return $this->render(
-            'AppBundle:Test:index.html.twig',
+            'AppBundle:test:index.html.twig',
             array('data' => var_export($product, true))
         );
 
@@ -90,7 +90,7 @@ class TestController extends Controller
         $products = $query->execute();
 
         return $this->render(
-            'AppBundle:Test:index.html.twig',
+            'AppBundle:test:index.html.twig',
             array('data' => print_r(null, true))
         );
 
@@ -111,7 +111,7 @@ class TestController extends Controller
         $rep = $this->get('app.model_manager');
 
         return $this->render(
-            'AppBundle:Test:index.html.twig',
+            'AppBundle:test:index.html.twig',
             array('data' => null)
         );
     }
@@ -150,7 +150,7 @@ class TestController extends Controller
         $products = $stmt->fetchAll();
 
         return $this->render(
-            'AppBundle:Test:index.html.twig',
+            'AppBundle:test:index.html.twig',
             array('data' => null)
         );
     }
@@ -184,7 +184,7 @@ class TestController extends Controller
         }
 
         return $this->render(
-            'AppBundle:Test:index.html.twig',
+            'AppBundle:test:index.html.twig',
             array('data' => null)
         );
     }
