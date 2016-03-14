@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\TaskType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,19 +11,28 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\HttpFoundation\Response;
 
 
 /**
  * Category controller.
  *
- * @Route("/form")
+ * @Route("/")
  */
 class FormController extends Controller
 {
     /**
-     * @Route("/", name="form")
+     * @Route("/form", name="form")
      */
     public function indexAction(Request $request)
+    {
+        return new Response('form');
+    }
+
+    /**
+     * @Route("/form1", name="form1")
+     */
+    public function indexAction1(Request $request)
     {
         // create a task and give it some dummy data for this example
         $task = new Task();
@@ -64,5 +74,29 @@ class FormController extends Controller
                 'form' => $form->createView(),
             )
         );
+    }
+
+    /**
+     * @Route("/form2", name="form2")
+     */
+    public function indexAction2(Request $request)
+    {
+        $task = new Task();
+        $form = $this->createForm(TaskType::class, $task);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            return $this->redirectToRoute('form');
+        }
+
+        return $this->render(
+            'AppBundle:task:form.html.twig',
+            array(
+                'task' => $task,
+                'form' => $form->createView(),
+            )
+        );
+
     }
 }

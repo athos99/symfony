@@ -20,6 +20,9 @@ class Builder implements ContainerAwareInterface {
     $menu->addChild('Category', array('route' => 'category_index'));
     $menu->addChild('Product', array('route' => 'product_index'));
     $menu->addChild('Form', array('route' => 'form'));
+    $menu['Form']->addChild('Form1', array('route' => 'form1'));
+    $menu['Form']->addChild('Form2', array('route' => 'form2'));
+
     $menu->addChild('Test', array('route' => 'test'));
     $menu['Test']->addChild('Test1', array('route' => 'test1'));
     $menu['Test']->addChild('Test2', array('route' => 'test2'));
