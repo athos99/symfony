@@ -1,3 +1,10 @@
+{% extends 'MopaBootstrapBundle::base.html.twig' %}
+{% block title %}Yourapp{% endblock %}
+{% block head_style %}
+    {% stylesheets filter='?yui_css' '@MopaBootstrapBundle/Resources/public/bootstrap/dist/css/bootstrap.css' %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />{% endstylesheets %}
+{% endblock %}
+{#
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,3 +22,4 @@
 {% block javascripts %}{% endblock %}
 </body>
 </html>
+#}
