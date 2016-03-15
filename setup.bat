@@ -22,3 +22,4 @@ php app/console fos:user:create admin admin@example.com admin --super-admin
 php app/console fos:user:promote test ROLE_ADMIN
 
 
+php app/console assetic:dump
