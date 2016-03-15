@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block  template %}{{ parent() }} -> AppBundle::base.html.twig {% endblock %}
 {% block body %}
+    {% block brand %}
+        <a class="navbar-brand" href="#">&lt;(O)&gt;</a>
+    {% endblock %}
+    {{ mopa_bootstrap_menu('AppBundle:Builder:mainMenu',  {'automenu':'navbar'}) }}
     {{ knp_menu_render('AppBundle:Builder:mainMenu') }}
     {% block content %}{% endblock %}
 {% endblock %}
