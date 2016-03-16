@@ -1,7 +1,6 @@
 php bin/console doctrine:database:drop --force
 php bin/console doctrine:database:create
 
-rem php bin/console doctrine:generate:entity
 
 php bin/console doctrine:generate:entities AppBundle/Entity/Product
 php bin/console doctrine:generate:entities AppBundle/Entity/Category
