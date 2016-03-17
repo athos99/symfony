@@ -1,0 +1,49 @@
+AppBundle\Entity\Group:
+    type: entity
+    table: group
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        permanent:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+        name:
+            type: string
+            nullable: true
+            length: 128
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    manyToMany:
+        dir:
+            targetEntity: Dir
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: group
+            joinTable:
+                name: right
+                joinColumns:
+                    -
+                        name: group_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: dir_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

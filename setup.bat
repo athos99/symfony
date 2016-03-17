@@ -2,9 +2,12 @@ php bin/console doctrine:database:drop --force
 php bin/console doctrine:database:create
 
 
-php bin/console doctrine:generate:entities AppBundle/Entity/Product
-php bin/console doctrine:generate:entities AppBundle/Entity/Category
-php bin/console doctrine:generate:entities AppBundle/Entity/User
+php bin/console doctrine:generate:entities AppBundle/Entity/Product --path src
+php bin/console doctrine:generate:entities AppBundle/Entity/Category --path src
+php bin/console doctrine:generate:entities AppBundle/Entity/User --path src
+php bin/console doctrine:generate:entities AppBundle/Entity/Dir --path src
+php bin/console doctrine:generate:entities AppBundle/Entity/Element --path src
+php bin/console doctrine:generate:entities AppBundle/Entity/Group --path src
 
 php bin/console doctrine:schema:update --force
 
@@ -12,6 +15,9 @@ php bin/console doctrine:schema:update --force
 php bin/console doctrine:generate:crud -n --overwrite  --with-write  --entity AppBundle:Product
 php bin/console doctrine:generate:crud -n --overwrite  --with-write  --entity AppBundle:Category
 php bin/console doctrine:generate:crud -n --overwrite  --with-write  --entity AppBundle:User
+php bin/console doctrine:generate:crud -n --overwrite  --with-write  --entity AppBundle:Dir
+php bin/console doctrine:generate:crud -n --overwrite  --with-write  --entity AppBundle:Element
+php bin/console doctrine:generate:crud -n --overwrite  --with-write  --entity AppBundle:Group
 
 php bin/console fos:user:create user user@example.com user
 php bin/console fos:user:create test test@example.com test

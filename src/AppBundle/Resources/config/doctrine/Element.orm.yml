@@ -1,0 +1,73 @@
+AppBundle\Entity\Element:
+    type: entity
+    table: element
+    indexes:
+        fk_element_dir_id:
+            columns:
+                - dir_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: true
+            length: 128
+            options:
+                fixed: false
+        title:
+            type: string
+            nullable: true
+            length: 256
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        info:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+        format:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+        rank:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+    manyToOne:
+        dir:
+            targetEntity: Dir
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: elements
+            joinColumns:
+                dir_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dir list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Autopath</th>
+                <th>Description</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Sortorder</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dir in dirs %}
+            <tr>
+                <td><a href="{{ path('dir_show', { 'id': dir.id }) }}">{{ dir.id }}</a></td>
+                <td>{{ dir.name }}</td>
+                <td>{{ dir.title }}</td>
+                <td>{% if dir.autoPath %}Yes{% else %}No{% endif %}</td>
+                <td>{{ dir.description }}</td>
+                <td>{% if dir.createdAt %}{{ dir.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if dir.updatedAt %}{{ dir.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ dir.sortOrder }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('dir_show', { 'id': dir.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('dir_edit', { 'id': dir.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dir_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
