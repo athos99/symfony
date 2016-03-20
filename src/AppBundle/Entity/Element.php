@@ -284,4 +284,3 @@ class Element
         return $this->dir;
     }
 }
-

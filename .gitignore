@@ -20,3 +20,5 @@ src/AppBundle/Entity/Category.php~
 src/AppBundle/Entity/Product.php~
 src/AppBundle/Entity/User.php~
 app/cache/
+src/AppBundle/Entity/Dir.php~
+src/AppBundle/Entity/Element.php~

@@ -1,6 +1,10 @@
 AppBundle\Entity\Dir:
     type: entity
     table: dir
+    repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
+    gedmo:
+        tree:
+          type: nested
     id:
         id:
             type: integer
@@ -11,6 +15,18 @@ AppBundle\Entity\Dir:
             generator:
                 strategy: IDENTITY
     fields:
+        lft:
+          type: integer
+          gedmo:
+            - treeLeft
+        rgt:
+          type: integer
+          gedmo:
+            - treeRight
+        lvl:
+          type: integer
+          gedmo:
+            - treeLevel
         name:
             type: string
             nullable: true

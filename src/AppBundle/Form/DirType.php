@@ -15,6 +15,9 @@ class DirType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('lft')
+            ->add('rgt')
+            ->add('lvl')
             ->add('name')
             ->add('title')
             ->add('autoPath')
