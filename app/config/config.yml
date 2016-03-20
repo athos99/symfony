@@ -73,7 +73,7 @@ doctrine:
             default:
                 naming_strategy: doctrine.orm.naming_strategy.underscore
                 auto_mapping: true
-#                mappings:
+                mappings:
 #                    gedmo_translatable:
 #                        type: annotation
 #                        prefix: Gedmo\Translatable\Entity
@@ -92,19 +92,19 @@ doctrine:
 #                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Loggable/Entity"
 #                        alias: GedmoLoggable # (optional) it will default to the name set for the mappingmapping
 #                        is_bundle: false
-#                    gedmo_tree:
-#                        type: annotation
-#                        prefix: Gedmo\Tree\Entity
-#                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
-#                        alias: GedmoTree # (optional) it will default to the name set for the mapping
-#                        is_bundle: false
+                    gedmo_tree:
+                        type: annotation
+                        prefix: Gedmo\Tree\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                        alias: GedmoTree # (optional) it will default to the name set for the mapping
+                        is_bundle: false
 ##                filters:
 #                    softdeleteable:
 #                        class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
 #                        enabled: true
 
-#stof_doctrine_extensions:
-#    default_locale: en_US
+stof_doctrine_extensions:
+    default_locale: en_US
 
     # Only used if you activated the Uploadable extension
 #    uploadable:
@@ -116,10 +116,10 @@ doctrine:
 #
 #        # Default file info class implementing FileInfoInterface: Optional. By default we provide a class which is prepared to receive an UploadedFile instance.
 #        default_file_info_class: Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
-#    orm:
-#        default:
-#             tree: true
-#             timestampable: false # not needed: listeners are not enabled by default
+    orm:
+        default:
+             tree: true
+             timestampable: false # not needed: listeners are not enabled by default
 #        other:
 #             timestampable: true
 #    mongodb:

@@ -1,19 +1,15 @@
 AppBundle\Entity\Dir:
-    type: entity
-    table: dir
-    repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
-    gedmo:
-        tree:
-          type: nested
+  type: entity
+  repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
+  table: dir
+  gedmo:
+    tree:
+      type: nested
+  id:
     id:
-        id:
-            type: integer
-            nullable: false
-            options:
-                unsigned: false
-            id: true
-            generator:
-                strategy: IDENTITY
+      type: integer
+      generator:
+        strategy: AUTO
     fields:
         lft:
           type: integer
@@ -67,20 +63,40 @@ AppBundle\Entity\Dir:
                 fixed: false
             column: sort_order
     manyToOne:
-        cover:
-            targetEntity: Element
-            inversedBy: null
-            joinColumn:
-                name: element_id_cover
-                referencedColumnName: id
-
-    manyToMany:
-        group:
-            targetEntity: Group
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: dir
-            inversedBy: null
-            joinTable: null
-            orderBy: null
+      root:
+        targetEntity: AppBundle\Entity\Dir
+        joinColumn:
+          referencedColumnName: id
+          onDelete: CASCADE
+        gedmo:
+          - treeRoot
+      parent:
+        targetEntity: AppBundle\Entity\Dir
+        inversedBy: children
+        joinColumn:
+          referencedColumnName: id
+          onDelete: CASCADE
+        gedmo:
+          - treeParent
+#        cover:
+#            targetEntity: Element
+#            inversedBy: null
+#            joinColumn:
+#                name: element_id_cover
+#                referencedColumnName: id
+#
+  oneToMany:
+    children:
+      targetEntity: AppBundle\Entity\Dir
+      mappedBy: parent
+      orderBy:
+        lft: ASC
+#        group:
+#            targetEntity: Group
+#            cascade: {  }
+#            fetch: LAZY
+#            mappedBy: dir
+#            inversedBy: null
+#            joinTable: null
+#            orderBy: null
     lifecycleCallbacks: {  }
