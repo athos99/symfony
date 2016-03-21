@@ -25,6 +25,8 @@ class DirType extends AbstractType
             ->add('createdAt', 'datetime')
             ->add('updatedAt', 'datetime')
             ->add('sortOrder')
+            ->add('root')
+            ->add('parent')
         ;
     }
     

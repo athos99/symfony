@@ -9,7 +9,6 @@ php bin/console doctrine:generate:entities AppBundle/Entity/Category --path src
 php bin/console doctrine:generate:entities AppBundle/Entity/User --path src
 
 php bin/console doctrine:schema:update --force
-goto :fin
 
 php bin/console doctrine:generate:crud -n --overwrite  --with-write  --entity AppBundle:Product
 php bin/console doctrine:generate:crud -n --overwrite  --with-write  --entity AppBundle:Category
