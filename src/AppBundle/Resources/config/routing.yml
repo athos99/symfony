@@ -16,3 +16,6 @@ test4:
 test5:
     path:     test5
     defaults: { _controller: AppBundle:Test:index5 }
+test6:
+    path:     test6
+    defaults: { _controller: AppBundle:Test:index6 }

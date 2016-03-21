@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Dir;
 use AppBundle\Manager\ModelManager;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManager;
@@ -188,5 +189,35 @@ class TestController extends Controller
             array('data' => null)
         );
     }
+
+
+    public function index6Action()
+    {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+
+
+        $dir = new Dir();
+        $dir->setName('aaaa');
+        $em->persist($dir);
+        $em->flush($dir);
+
+
+        $dir2 = new Dir();
+        $dir2->setName('bbbb');
+        $dir2->setParent($dir);
+
+        $em->persist($dir2);
+        $em->flush($dir2);
+
+
+
+        return $this->render(
+          'AppBundle:test:index.html.twig',
+          array('data' => var_export(1, true))
+        );
+
+    }
+
 
 }

@@ -29,6 +29,7 @@ class Builder implements ContainerAwareInterface {
     $menu['Test']->addChild('Test3', array('route' => 'test3'));
     $menu['Test']->addChild('Test4', array('route' => 'test4'));
     $menu['Test']->addChild('Test5', array('route' => 'test5'));
+    $menu['Test']->addChild('Test6', array('route' => 'test6'));
 
 // access services from the container!
 //    $em = $this->container->get('doctrine')->getManager();
