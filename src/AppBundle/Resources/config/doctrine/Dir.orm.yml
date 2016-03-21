@@ -2,8 +2,8 @@ AppBundle\Entity\Dir:
   type: entity
   repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
   table: dir
-  gedmo:
-    tree:
+    gedmo:
+      tree:
       type: nested
   id:
     id:
@@ -11,92 +11,93 @@ AppBundle\Entity\Dir:
       generator:
         strategy: AUTO
     fields:
-        lft:
-          type: integer
-          gedmo:
-            - treeLeft
-        rgt:
-          type: integer
-          gedmo:
-            - treeRight
-        lvl:
-          type: integer
-          gedmo:
-            - treeLevel
-        name:
-            type: string
-            nullable: true
-            length: 64
-            options:
-                fixed: false
-        title:
-            type: string
-            nullable: true
-            length: 256
-            options:
-                fixed: false
-        autoPath:
-            type: boolean
-            nullable: false
-            options:
-                default: '1'
-            column: auto_path
-        description:
-            type: text
-            nullable: true
-            length: 65535
-            options:
-                fixed: false
-        createdAt:
-            type: datetime
-            nullable: true
-            column: created_at
-        updatedAt:
-            type: datetime
-            nullable: true
-            column: updated_at
-        sortOrder:
-            type: string
-            nullable: true
-            length: 30
-            options:
-                fixed: false
-            column: sort_order
-    manyToOne:
-      root:
-        targetEntity: AppBundle\Entity\Dir
-        joinColumn:
-          referencedColumnName: id
-          onDelete: CASCADE
+      lft:
+        type: integer
         gedmo:
-          - treeRoot
-      parent:
-        targetEntity: AppBundle\Entity\Dir
-        inversedBy: children
-        joinColumn:
-          referencedColumnName: id
-          onDelete: CASCADE
+          - treeLeft
+      rgt:
+        type: integer
         gedmo:
-          - treeParent
-#        cover:
-#            targetEntity: Element
-#            inversedBy: null
-#            joinColumn:
-#                name: element_id_cover
-#                referencedColumnName: id
-#
-  oneToMany:
-    children:
+          - treeRight
+      lvl:
+        type: integer
+        gedmo:
+          - treeLevel
+      name:
+        type: string
+        nullable: true
+        length: 64
+        options:
+          fixed: false
+      title:
+        type: string
+        nullable: true
+        length: 256
+        options:
+          fixed: false
+      autoPath:
+        type: boolean
+        nullable: false
+        options:
+          default: '1'
+        column: auto_path
+      description:
+        type: text
+        nullable: true
+        length: 65535
+        options:
+          fixed: false
+      createdAt:
+        type: datetime
+        nullable: true
+        column: created_at
+      updatedAt:
+        type: datetime
+        nullable: true
+        column: updated_at
+      sortOrder:
+        type: string
+        nullable: true
+        length: 30
+        options:
+          fixed: false
+        column: sort_order
+  manyToOne:
+    root:
       targetEntity: AppBundle\Entity\Dir
-      mappedBy: parent
-      orderBy:
-        lft: ASC
-#        group:
-#            targetEntity: Group
-#            cascade: {  }
-#            fetch: LAZY
-#            mappedBy: dir
-#            inversedBy: null
-#            joinTable: null
-#            orderBy: null
-    lifecycleCallbacks: {  }
+      joinColumn:
+        referencedColumnName: id
+        onDelete: CASCADE
+      gedmo:
+        - treeRoot
+    parent:
+      targetEntity: AppBundle\Entity\Dir
+      inversedBy: children
+      joinColumn:
+        referencedColumnName: id
+        onDelete: CASCADE
+      gedmo:
+        - treeParent
+    #        cover:
+    #            targetEntity: Element
+    #            inversedBy: null
+    #            joinColumn:
+    #                name: element_id_cover
+    #                referencedColumnName: id
+    #
+
+  oneToMany:
+  children:
+    targetEntity: AppBundle\Entity\Dir
+    mappedBy: parent
+    orderBy:
+      lft: ASC
+    #        group:
+    #            targetEntity: Group
+    #            cascade: {  }
+    #            fetch: LAZY
+    #            mappedBy: dir
+    #            inversedBy: null
+    #            joinTable: null
+    #            orderBy: null
+  lifecycleCallbacks: {  }
