@@ -1,0 +1,29 @@
+
+ // Provide the name of a bundle as the first argument of this command to dump its default configuration.
+
+Available registered bundles with their extension alias if available:
++------------------------------+---------------------------+
+| Bundle name                  | Extension alias           |
++------------------------------+---------------------------+
+| AppBundle                    |                           |
+| AsseticBundle                | assetic                   |
+| DebugBundle                  | debug                     |
+| DoctrineBundle               | doctrine                  |
+| FOSUserBundle                | fos_user                  |
+| FrameworkBundle              | framework                 |
+| KnpMenuBundle                | knp_menu                  |
+| MonologBundle                | monolog                   |
+| MopaBootstrapBundle          | mopa_bootstrap            |
+| SecurityBundle               | security                  |
+| SensioDistributionBundle     | sensio_distribution       |
+| SensioFrameworkExtraBundle   | sensio_framework_extra    |
+| SensioGeneratorBundle        |                           |
+| SonataAdminBundle            | sonata_admin              |
+| SonataBlockBundle            | sonata_block              |
+| SonataCoreBundle             | sonata_core               |
+| SonataDoctrineORMAdminBundle | sonata_doctrine_orm_admin |
+| StofDoctrineExtensionsBundle | stof_doctrine_extensions  |
+| SwiftmailerBundle            | swiftmailer               |
+| TwigBundle                   | twig                      |
+| WebProfilerBundle            | web_profiler              |
++------------------------------+---------------------------+

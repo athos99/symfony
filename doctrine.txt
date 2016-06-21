@@ -1,0 +1,332 @@
+# Default configuration for extension with alias: "doctrine"
+doctrine:
+    dbal:
+        default_connection:   ~
+        types:
+
+            # Prototype
+            name:
+                class:                ~ # Required
+                commented:            true
+        connections:
+
+            # Prototype
+            name:
+
+                # A URL with connection information; any parameter value parsed from this string will override explicitly set parameters
+                url:                  ~
+                dbname:               ~
+                host:                 localhost
+                port:                 null
+                user:                 root
+                password:             null
+                application_name:     ~
+                charset:              ~
+                path:                 ~
+                memory:               ~
+
+                # The unix socket to use for MySQL
+                unix_socket:          ~
+
+                # True to use as persistent connection for the ibm_db2 driver
+                persistent:           ~
+
+                # The protocol to use for the ibm_db2 driver (default to TCPIP if ommited)
+                protocol:             ~
+
+                # True to use SERVICE_NAME as connection parameter instead of SID for Oracle
+                service:              ~
+
+                # Overrules dbname parameter if given and used as SERVICE_NAME or SID connection parameter for Oracle depending on the service parameter.
+                servicename:          ~
+
+                # The session mode to use for the oci8 driver
+                sessionMode:          ~
+
+                # The name of a running database server to connect to for SQL Anywhere.
+                server:               ~
+
+                # Determines whether or with what priority a SSL TCP/IP connection will be negotiated with the server for PostgreSQL.
+                sslmode:              ~
+
+                # The name of a file containing SSL certificate authority (CA) certificate(s). If the file exists, the server's certificate will be verified to be signed by one of these authorities.
+                sslrootcert:          ~
+
+                # True to use a pooled server with the oci8/pdo_oracle driver
+                pooled:               ~
+
+                # Configuring MultipleActiveResultSets for the pdo_sqlsrv driver
+                MultipleActiveResultSets:  ~
+
+                # Use savepoints for nested transactions
+                use_savepoints:       ~
+                driver:               pdo_mysql
+                platform_service:     ~
+                auto_commit:          ~
+                schema_filter:        ~
+                logging:              true
+                profiling:            true
+                server_version:       ~
+                driver_class:         ~
+                wrapper_class:        ~
+                shard_choser:         ~
+                shard_choser_service:  ~
+                keep_slave:           ~
+                options:
+
+                    # Prototype
+                    key:                  ~
+                mapping_types:
+
+                    # Prototype
+                    name:                 ~
+
+                # This option is used by the schema-tool and affects generated SQL. Possible keys include 'charset','collate', and 'engine'.
+                default_table_options:
+
+                    # Prototype
+                    name:                 ~
+                slaves:
+
+                    # Prototype
+                    name:
+
+                        # A URL with connection information; any parameter value parsed from this string will override explicitly set parameters
+                        url:                  ~
+                        dbname:               ~
+                        host:                 localhost
+                        port:                 null
+                        user:                 root
+                        password:             null
+                        application_name:     ~
+                        charset:              ~
+                        path:                 ~
+                        memory:               ~
+
+                        # The unix socket to use for MySQL
+                        unix_socket:          ~
+
+                        # True to use as persistent connection for the ibm_db2 driver
+                        persistent:           ~
+
+                        # The protocol to use for the ibm_db2 driver (default to TCPIP if ommited)
+                        protocol:             ~
+
+                        # True to use SERVICE_NAME as connection parameter instead of SID for Oracle
+                        service:              ~
+
+                        # Overrules dbname parameter if given and used as SERVICE_NAME or SID connection parameter for Oracle depending on the service parameter.
+                        servicename:          ~
+
+                        # The session mode to use for the oci8 driver
+                        sessionMode:          ~
+
+                        # The name of a running database server to connect to for SQL Anywhere.
+                        server:               ~
+
+                        # Determines whether or with what priority a SSL TCP/IP connection will be negotiated with the server for PostgreSQL.
+                        sslmode:              ~
+
+                        # The name of a file containing SSL certificate authority (CA) certificate(s). If the file exists, the server's certificate will be verified to be signed by one of these authorities.
+                        sslrootcert:          ~
+
+                        # True to use a pooled server with the oci8/pdo_oracle driver
+                        pooled:               ~
+
+                        # Configuring MultipleActiveResultSets for the pdo_sqlsrv driver
+                        MultipleActiveResultSets:  ~
+
+                        # Use savepoints for nested transactions
+                        use_savepoints:       ~
+                shards:
+                    id:                   ~ # Required
+
+                    # A URL with connection information; any parameter value parsed from this string will override explicitly set parameters
+                    url:                  ~
+                    dbname:               ~
+                    host:                 localhost
+                    port:                 null
+                    user:                 root
+                    password:             null
+                    application_name:     ~
+                    charset:              ~
+                    path:                 ~
+                    memory:               ~
+
+                    # The unix socket to use for MySQL
+                    unix_socket:          ~
+
+                    # True to use as persistent connection for the ibm_db2 driver
+                    persistent:           ~
+
+                    # The protocol to use for the ibm_db2 driver (default to TCPIP if ommited)
+                    protocol:             ~
+
+                    # True to use SERVICE_NAME as connection parameter instead of SID for Oracle
+                    service:              ~
+
+                    # Overrules dbname parameter if given and used as SERVICE_NAME or SID connection parameter for Oracle depending on the service parameter.
+                    servicename:          ~
+
+                    # The session mode to use for the oci8 driver
+                    sessionMode:          ~
+
+                    # The name of a running database server to connect to for SQL Anywhere.
+                    server:               ~
+
+                    # Determines whether or with what priority a SSL TCP/IP connection will be negotiated with the server for PostgreSQL.
+                    sslmode:              ~
+
+                    # The name of a file containing SSL certificate authority (CA) certificate(s). If the file exists, the server's certificate will be verified to be signed by one of these authorities.
+                    sslrootcert:          ~
+
+                    # True to use a pooled server with the oci8/pdo_oracle driver
+                    pooled:               ~
+
+                    # Configuring MultipleActiveResultSets for the pdo_sqlsrv driver
+                    MultipleActiveResultSets:  ~
+
+                    # Use savepoints for nested transactions
+                    use_savepoints:       ~
+    orm:
+        default_entity_manager:  ~
+
+        # Auto generate mode possible values are: "NEVER", "ALWAYS", "FILE_NOT_EXISTS", "EVAL"
+        auto_generate_proxy_classes:  false
+        proxy_dir:            '%kernel.cache_dir%/doctrine/orm/Proxies'
+        proxy_namespace:      Proxies
+        entity_managers:
+
+            # Prototype
+            name:
+                query_cache_driver:
+                    type:                 array
+                    host:                 ~
+                    port:                 ~
+                    instance_class:       ~
+                    class:                ~
+                    id:                   ~
+                    namespace:            null
+                    cache_provider:       null
+                metadata_cache_driver:
+                    type:                 array
+                    host:                 ~
+                    port:                 ~
+                    instance_class:       ~
+                    class:                ~
+                    id:                   ~
+                    namespace:            null
+                    cache_provider:       null
+                result_cache_driver:
+                    type:                 array
+                    host:                 ~
+                    port:                 ~
+                    instance_class:       ~
+                    class:                ~
+                    id:                   ~
+                    namespace:            null
+                    cache_provider:       null
+                entity_listeners:
+                    entities:
+
+                        # Prototype
+                        class:
+                            listeners:
+
+                                # Prototype
+                                class:
+                                    events:
+                                        type:                 ~
+                                        method:               null
+                connection:           ~
+                class_metadata_factory_name:  Doctrine\ORM\Mapping\ClassMetadataFactory
+                default_repository_class:  Doctrine\ORM\EntityRepository
+                auto_mapping:         false
+                naming_strategy:      doctrine.orm.naming_strategy.default
+                quote_strategy:       doctrine.orm.quote_strategy.default
+                entity_listener_resolver:  null
+                repository_factory:   null
+                second_level_cache:
+                    region_cache_driver:
+                        type:                 array
+                        host:                 ~
+                        port:                 ~
+                        instance_class:       ~
+                        class:                ~
+                        id:                   ~
+                        namespace:            null
+                        cache_provider:       null
+                    region_lock_lifetime:  60
+                    log_enabled:          true
+                    region_lifetime:      0
+                    enabled:              true
+                    factory:              ~
+                    regions:
+
+                        # Prototype
+                        name:
+                            cache_driver:
+                                type:                 array
+                                host:                 ~
+                                port:                 ~
+                                instance_class:       ~
+                                class:                ~
+                                id:                   ~
+                                namespace:            null
+                                cache_provider:       null
+                            lock_path:            '%kernel.cache_dir%/doctrine/orm/slc/filelock'
+                            lock_lifetime:        60
+                            type:                 default
+                            lifetime:             0
+                            service:              ~
+                            name:                 ~
+                    loggers:
+
+                        # Prototype
+                        name:
+                            name:                 ~
+                            service:              ~
+                hydrators:
+
+                    # Prototype
+                    name:                 ~
+                mappings:
+
+                    # Prototype
+                    name:
+                        mapping:              true
+                        type:                 ~
+                        dir:                  ~
+                        alias:                ~
+                        prefix:               ~
+                        is_bundle:            ~
+                dql:
+                    string_functions:
+
+                        # Prototype
+                        name:                 ~
+                    numeric_functions:
+
+                        # Prototype
+                        name:                 ~
+                    datetime_functions:
+
+                        # Prototype
+                        name:                 ~
+
+                # Register SQL Filters in the entity manager
+                filters:
+
+                    # Prototype
+                    name:
+                        class:                ~ # Required
+                        enabled:              false
+                        parameters:
+
+                            # Prototype
+                            name:                 ~
+        resolve_target_entities:
+
+            # Prototype
+            interface:            ~
+

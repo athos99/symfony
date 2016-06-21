@@ -1,0 +1,51 @@
+# Default configuration for extension with alias: "stof_doctrine_extensions"
+stof_doctrine_extensions:
+    orm:
+
+        # Prototype
+        id:
+            translatable:         false
+            timestampable:        false
+            blameable:            false
+            sluggable:            false
+            tree:                 false
+            loggable:             false
+            sortable:             false
+            softdeleteable:       false
+            uploadable:           false
+            reference_integrity:  false
+    mongodb:
+
+        # Prototype
+        id:
+            translatable:         false
+            timestampable:        false
+            blameable:            false
+            sluggable:            false
+            tree:                 false
+            loggable:             false
+            sortable:             false
+            softdeleteable:       false
+            uploadable:           false
+            reference_integrity:  false
+    class:
+        translatable:         Gedmo\Translatable\TranslatableListener
+        timestampable:        Gedmo\Timestampable\TimestampableListener
+        blameable:            Gedmo\Blameable\BlameableListener
+        sluggable:            Gedmo\Sluggable\SluggableListener
+        tree:                 Gedmo\Tree\TreeListener
+        loggable:             Gedmo\Loggable\LoggableListener
+        sortable:             Gedmo\Sortable\SortableListener
+        softdeleteable:       Gedmo\SoftDeleteable\SoftDeleteableListener
+        uploadable:           Gedmo\Uploadable\UploadableListener
+        reference_integrity:  Gedmo\ReferenceIntegrity\ReferenceIntegrityListener
+    uploadable:
+        default_file_path:    null
+        mime_type_guesser_class:  Stof\DoctrineExtensionsBundle\Uploadable\MimeTypeGuesserAdapter
+        default_file_info_class:  Stof\DoctrineExtensionsBundle\Uploadable\UploadedFileInfo
+        validate_writable_directory:  true
+    default_locale:       en
+    translation_fallback:  false
+    persist_default_translation:  false
+    skip_translation_on_load:  false
+

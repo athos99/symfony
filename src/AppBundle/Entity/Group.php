@@ -156,4 +156,3 @@ class Group
         return $this->dir;
     }
 }
-
